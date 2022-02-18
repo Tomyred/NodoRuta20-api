@@ -1,6 +1,6 @@
 import { schema } from "../../../models/link.model.js";
 import { defineEntityRouter } from "../../base.js";
 
-const contactsRouter = defineEntityRouter("contact", schema);
+const accessionsRouter = defineEntityRouter("accession", schema);
 
-export default contactsRouter;
+export default accessionsRouter;

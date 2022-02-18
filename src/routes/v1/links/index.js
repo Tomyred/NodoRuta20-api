@@ -1,10 +1,32 @@
 import { Router } from "express";
-import contactsLinksRouter from "./contacts.js";
-import entitiesLinksRouter from "./entities.js";
+import contactsRouter from "./contacts.js";
+import entitiesRouter from "./entities.js";
+import accessionsRouter from "./accessions.js";
+import affiliationsRouter from "./affiliations.js";
+import citizenDefenseRouter from "./citizenDefense.js";
+import citizenEducationRouter from "./citizenEducation.js";
+import cooperativesRouter from "./cooperatives.js";
+import DACBonusesRouter from "./DACBonuses.js";
+import infoServiceRouter from "./infoService.js";
+import jobBankRouter from "./jobBank.js";
+import platformsRouter from "./platforms.js";
+import projectsRouter from "./projects.js";
+import scheduleRouter from "./schedule.js";
 
 const linksRouter = Router();
 
-linksRouter.use("/contacts", contactsLinksRouter);
-linksRouter.use("/entities", entitiesLinksRouter);
+linksRouter.use("/accessions", accessionsRouter);
+linksRouter.use("/affiliations", affiliationsRouter);
+linksRouter.use("/citizen-defense", citizenDefenseRouter);
+linksRouter.use("/citizen-education", citizenEducationRouter);
+linksRouter.use("/contacts", contactsRouter);
+linksRouter.use("/cooperatives", cooperativesRouter);
+linksRouter.use("/dac-bonuses", DACBonusesRouter);
+linksRouter.use("/entities", entitiesRouter);
+linksRouter.use("/info-service", infoServiceRouter);
+linksRouter.use("/job-bank", jobBankRouter);
+linksRouter.use("/platforms", platformsRouter);
+linksRouter.use("/projects", projectsRouter);
+linksRouter.use("/schedule", scheduleRouter);
 
 export default linksRouter;
