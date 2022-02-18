@@ -12,7 +12,7 @@ import jobBankRouter from "./jobBank.js";
 import platformsRouter from "./platforms.js";
 import projectsRouter from "./projects.js";
 import scheduleRouter from "./schedule.js";
-import proceduresRouter from "./procedures.js";
+import formalitiesRouter from "./formalities.js";
 
 const linksRouter = Router();
 
@@ -27,7 +27,7 @@ linksRouter.use("/entities", entitiesRouter);
 linksRouter.use("/info-service", infoServiceRouter);
 linksRouter.use("/job-bank", jobBankRouter);
 linksRouter.use("/platforms", platformsRouter);
-linksRouter.use("/procedures", proceduresRouter);
+linksRouter.use("/formalities", formalitiesRouter);
 linksRouter.use("/projects", projectsRouter);
 linksRouter.use("/schedule", scheduleRouter);
 

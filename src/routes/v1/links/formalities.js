@@ -1,6 +1,6 @@
 import { schema } from "../../../models/link.model.js";
 import { defineEntityRouter } from "../../base.js";
 
-const proceduresRouter = defineEntityRouter("procedure", schema);
+const formalitiesRouter = defineEntityRouter("formality", schema);
 
-export default proceduresRouter;
+export default formalitiesRouter;
