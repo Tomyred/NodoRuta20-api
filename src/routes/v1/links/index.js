@@ -13,6 +13,7 @@ import platformsRouter from "./platforms.js";
 import projectsRouter from "./projects.js";
 import scheduleRouter from "./schedule.js";
 import formalitiesRouter from "./formalities.js";
+import politicEducationRouter from "./politicEducation.js";
 
 const linksRouter = Router();
 
@@ -30,5 +31,6 @@ linksRouter.use("/platforms", platformsRouter);
 linksRouter.use("/formalities", formalitiesRouter);
 linksRouter.use("/projects", projectsRouter);
 linksRouter.use("/schedule", scheduleRouter);
+linksRouter.use("/politic-education", politicEducationRouter);
 
 export default linksRouter;
