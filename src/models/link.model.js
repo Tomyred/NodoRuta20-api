@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
-export const schema = new mongoose.Schema(
+export const linkSchema = new mongoose.Schema(
     {
+        group: { type: String, required: true },
         title: { type: String, required: true },
         color: { type: String, required: true, default: "#2196f3" },
         description: { type: String, required: false },
@@ -9,3 +10,7 @@ export const schema = new mongoose.Schema(
     },
     { timestamps: true }
 );
+
+const linkModel = mongoose.model("Link", linkSchema);
+
+export default linkModel;
