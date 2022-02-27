@@ -15,7 +15,12 @@ linksByGroupRouter.get("/", async (req, res, next) => {
     if (group) {
         try {
             const links = await linkModel.find(
-                { group: group, ...(title ? { title: title } : []) },
+                {
+                    group: group,
+                    ...(title
+                        ? { title: { $regex: title, $options: "i" } }
+                        : []),
+                },
                 null,
                 {
                     ...(page ? { skip: page } : []),
