@@ -11,7 +11,6 @@ linksByGroupRouter.get("/", async (req, res, next) => {
     const page = Number(req.query.page);
     const perPage = Number(req.query.per_page);
 
-    console.log(title);
     if (group) {
         try {
             const links = await linkModel.find(
@@ -28,12 +27,7 @@ linksByGroupRouter.get("/", async (req, res, next) => {
                 }
             );
 
-            if (links.length > 0) {
-                defaultResponse(req, res, links);
-            } else {
-                const error = { code: `No data found` };
-                defaultResponse(req, res, null, error);
-            }
+            defaultResponse(req, res, links);
         } catch (error) {
             defaultResponse(req, res, null, error);
         }
