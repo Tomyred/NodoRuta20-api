@@ -1,6 +1,6 @@
 import { Router } from "express";
-import linkModel from "../../models/link.model.js";
-import { defaultResponse } from "../../utils.js";
+import linkModel from "../../../models/link.model.js";
+import { defaultResponse } from "../../../utils.js";
 
 const linksByGroupRouter = Router();
 
