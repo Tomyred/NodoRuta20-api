@@ -1,9 +1,10 @@
-import { radioStationSchema } from "../../../models/radioStation.model.js";
-import { defineEntityRouter } from "../../base.js";
+import { Router } from "express";
+import radioStationRouter from "./radioStation.js";
+import radioStationNamesRouter from "./radioStationNames.js";
 
-const radioStationRouter = defineEntityRouter(
-    "RadioStation",
-    radioStationSchema
-);
+export const router = Router();
 
-export default radioStationRouter;
+router.use("/", radioStationRouter);
+router.use("/names", radioStationNamesRouter);
+
+export default router;
