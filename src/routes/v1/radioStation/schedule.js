@@ -23,7 +23,7 @@ scheduleRouter.put("/:id", async (req, res) => {
             { _id: id },
             { $push: { schedule: data } }
         );
-        res.json(updated);
+        defaultResponse(req, res, updated);
     } else {
         const updated = await radioStationModel.findOneAndUpdate(
             { _id: id },
@@ -37,7 +37,7 @@ scheduleRouter.put("/:id", async (req, res) => {
             }
         );
 
-        res.json(updated);
+        defaultResponse(req, res, updated);
     }
 });
 
