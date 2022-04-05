@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 export const radioStationSchema = new mongoose.Schema(
     {
         stationName: { type: String, required: true },
+        reference: { type: String, required: false },
         schedule: [
             {
                 day: { type: String, required: true },
