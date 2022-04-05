@@ -9,6 +9,7 @@ export const radioStationSchema = new mongoose.Schema(
                 broadcasts: [
                     {
                         hour: { type: String, required: true },
+                        description: { type: String, required: false },
                         name: { type: String, required: true },
                         hosts: [{ type: String, required: true }],
                     },
