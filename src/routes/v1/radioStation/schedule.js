@@ -66,4 +66,32 @@ scheduleRouter.put("/remove/:id/:day", async (req, res) => {
     defaultResponse(req, res, updated);
 });
 
+scheduleRouter.put("/update/:id/:day", async (req, res) => {
+    const id = req.params.id;
+    const day = req.params.day;
+    const data = req.body;
+
+    if (ObjectId.isValid(id) === false) {
+        const error = { message: `"${id}" is not a valid id` };
+        defaultResponse(req, res, null, error);
+    }
+    // res.json(data);
+    const updated = await radioStationModel.findOneAndUpdate(
+        { _id: id },
+        { $set: { "schedule.$[elemX].broadcasts.$[elemY]": data } },
+        {
+            arrayFilters: [
+                {
+                    "elemX.day": day,
+                },
+                {
+                    "elemY._id": data._id,
+                },
+            ],
+        }
+    );
+
+    defaultResponse(req, res, updated);
+});
+
 export default scheduleRouter;
