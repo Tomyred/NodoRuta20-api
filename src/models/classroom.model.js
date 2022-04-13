@@ -4,6 +4,7 @@ export const classroomSchema = new mongoose.Schema(
     {
         classroomName: { type: String, required: true },
         reference: { type: String, required: false },
+        type: { type: String, required: false },
         schedule: [
             {
                 day: { type: String, required: true },
