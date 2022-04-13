@@ -1,6 +1,6 @@
 import { Router } from "express";
 import classroomRouter from "./classroom.js";
-import classroomNamesRouter from "./classroomNames.js";
+import classroomNamesRouter from "./classroomTypes.js";
 import scheduleRouter from "./schedule.js";
 
 export const router = Router();
