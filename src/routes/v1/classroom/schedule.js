@@ -86,6 +86,7 @@ scheduleRouter.put("/update/:id/:day", async (req, res) => {
             defaultResponse(req, res, null, error);
         }
 
+        const classroom = classroomModel.findOne({ _id: id });
         if (prevDay === day) {
             const updated = await classroomModel.findOneAndUpdate(
                 { _id: id },
@@ -110,6 +111,10 @@ scheduleRouter.put("/update/:id/:day", async (req, res) => {
             );
             defaultResponse(req, res, updated);
         } else {
+            const classroom = await classroomModel.findOne({ _id: id });
+            const dayExist = classroom.schedule.find(
+                element => element.day === day
+            );
             await classroomModel.findOneAndUpdate(
                 { _id: id },
                 { $pull: { "schedule.$[elemX].courses": editedCourse } },
@@ -121,18 +126,28 @@ scheduleRouter.put("/update/:id/:day", async (req, res) => {
                     ],
                 }
             );
-            const updated = await classroomModel.findOneAndUpdate(
-                { _id: id },
-                { $push: { "schedule.$[elemX].courses": editedCourse } },
-                {
-                    arrayFilters: [
-                        {
-                            "elemX.day": prevDay,
-                        },
-                    ],
-                }
-            );
-            defaultResponse(req, res, updated);
+            if (dayExist) {
+                const updated = await classroomModel.findOneAndUpdate(
+                    { _id: id },
+                    { $push: { "schedule.$[elemX].courses": editedCourse } },
+                    {
+                        arrayFilters: [
+                            {
+                                "elemX.day": day,
+                            },
+                        ],
+                    }
+                );
+                defaultResponse(req, res, updated);
+            } else {
+                const newScheduleElement = { day, courses: [editedCourse] };
+
+                const updated = await classroomModel.findOneAndUpdate(
+                    { _id: id },
+                    { $push: { schedule: newScheduleElement } }
+                );
+                defaultResponse(req, res, updated);
+            }
         }
     } catch (error) {
         defaultResponse(req, res, null, error);
