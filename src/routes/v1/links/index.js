@@ -1,9 +1,11 @@
 import { Router } from "express";
 import linksRouter from "./links.js";
-import linksByGroupRouter from "./linksWithQuery.js";
+import linksByGroupRouter from "./linksByGroup.js";
+import linksTitles from "./linksTitles.js";
 
-export const router = Router();
+const router = Router();
 
 router.use("/", linksByGroupRouter, linksRouter);
+router.use("/titles", linksTitles);
 
 export default router;
