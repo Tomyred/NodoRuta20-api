@@ -1,16 +1,21 @@
 import mongoose from "mongoose";
 
-export const linkSchema = new mongoose.Schema(
+export const consoleSchema = new mongoose.Schema(
     {
         group: { type: String, required: true },
-        title: { type: String, required: true },
-        color: { type: String, required: true, default: "#2196f3" },
-        description: { type: String, required: false },
-        url: { type: String, required: true },
+        consoleName: { type: String, required: true },
+        links: [
+            {
+                color: { type: String, required: true, default: "#2196f3" },
+                description: { type: String, required: false },
+                title: { type: String, required: true },
+                url: { type: String, required: true },
+            },
+        ],
     },
     { timestamps: true }
 );
 
-const linkModel = mongoose.model("Link", linkSchema);
+const consoleModel = mongoose.model("Link", consoleSchema);
 
-export default linkModel;
+export default consoleModel;

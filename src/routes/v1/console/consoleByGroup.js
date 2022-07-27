@@ -2,9 +2,9 @@ import { Router } from "express";
 import linkModel from "../../../models/link.model.js";
 import { defaultResponse } from "../../../utils.js";
 
-const linksByGroupRouter = Router();
+const consolesByGroupRouter = Router();
 
-linksByGroupRouter.get("/", async (req, res, next) => {
+consolesByGroupRouter.get("/", async (req, res, next) => {
     const group = req.query.group;
     const title = req.query.title;
 
@@ -36,4 +36,4 @@ linksByGroupRouter.get("/", async (req, res, next) => {
     }
 });
 
-export default linksByGroupRouter;
+export default consolesByGroupRouter;
