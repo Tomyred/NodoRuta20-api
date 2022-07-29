@@ -1,10 +1,10 @@
 import { Router } from "express";
-import consoleModel from "../../../models/link.model.js";
+import consoleModel from "../../../models/console.model.js";
 import { defaultResponse } from "../../../utils.js";
 
 const consolesValuesRouter = Router();
 
-consolesValuesRouter.get("/console-names", async (req, res) => {
+consolesValuesRouter.get("/names", async (req, res) => {
     try {
         const consoleNamesObj = await consoleModel
             .find({})

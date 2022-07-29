@@ -68,7 +68,12 @@ scheduleRouter.put("/remove/:id/:day", async (req, res) => {
             }
         );
 
-        defaultResponse(req, res, updated);
+        if (updated) {
+            defaultResponse(req, res, updated);
+        } else {
+            const error = { message: "Could not update the document" };
+            defaultResponse(req, res, null, error);
+        }
     } catch (error) {
         defaultResponse(req, res, null, error);
     }
@@ -86,7 +91,6 @@ scheduleRouter.put("/update/:id/:day", async (req, res) => {
             defaultResponse(req, res, null, error);
         }
 
-        const classroom = classroomModel.findOne({ _id: id });
         if (prevDay === day) {
             const updated = await classroomModel.findOneAndUpdate(
                 { _id: id },
@@ -138,7 +142,13 @@ scheduleRouter.put("/update/:id/:day", async (req, res) => {
                         ],
                     }
                 );
-                defaultResponse(req, res, updated);
+
+                if (updated) {
+                    defaultResponse(req, res, updated);
+                } else {
+                    const error = { message: "Could not update the document" };
+                    defaultResponse(req, res, null, error);
+                }
             } else {
                 const newScheduleElement = { day, courses: [editedCourse] };
 

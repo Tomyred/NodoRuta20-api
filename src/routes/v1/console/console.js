@@ -1,4 +1,4 @@
-import { consoleSchema } from "../../../models/link.model.js";
+import { consoleSchema } from "../../../models/console.model.js";
 import { defineEntityRouter } from "../../base.js";
 
 const consolesRouter = defineEntityRouter("Console", consoleSchema);

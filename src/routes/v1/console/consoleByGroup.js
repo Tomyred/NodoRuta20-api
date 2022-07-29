@@ -1,5 +1,5 @@
 import { Router } from "express";
-import linkModel from "../../../models/link.model.js";
+import linkModel from "../../../models/console.model.js";
 import { defaultResponse } from "../../../utils.js";
 
 const consolesByGroupRouter = Router();

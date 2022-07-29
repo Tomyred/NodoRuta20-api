@@ -16,6 +16,6 @@ export const consoleSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const consoleModel = mongoose.model("Link", consoleSchema);
+const consoleModel = mongoose.model("Console", consoleSchema);
 
 export default consoleModel;
